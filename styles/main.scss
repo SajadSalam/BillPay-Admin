@@ -1,0 +1,283 @@
+* {
+    font-family: 'Tajawal', sans-serif;
+}
+
+.text-hero-gradient {
+    background: linear-gradient(
+        312.33deg,
+        #d6deff 12.16%,
+        #747eb5 67.59%,
+        #6e4291 94.73%
+    );
+    font-weight: 700;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient {
+    background: linear-gradient(
+        310.14deg,
+        #d6deff 12.98%,
+        #b574ab 92.6%,
+        #6e4291 131.58%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-gradient {
+    background: linear-gradient(
+        312.33deg,
+        #d6deff 12.16%,
+        #747eb5 67.59%,
+        #6e4291 94.73%
+    );
+}
+.gradient {
+    background: linear-gradient(
+        310.14deg,
+        #d6deff 12.98%,
+        #b574ab 92.6%,
+        #6e4291 131.58%
+    ) !important;
+    color: black;
+}
+.gradient-hero {
+    background: linear-gradient(
+        312.33deg,
+        #d6deff 12.16%,
+        #747eb5 67.59%,
+        #6e4291 94.73%
+    ) !important;
+    color: black;
+}
+
+.text-disabled {
+    color: rgba(112, 112, 112, 1);
+}
+
+.border-gradient {
+    position: relative;
+    @extend .text-gradient;
+}
+
+.border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 2px;
+    height: 100%;
+    background: linear-gradient(
+        310.14deg,
+        #d6deff 12.98%,
+        #b574ab 92.6%,
+        #6e4291 131.58%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.nui-button:disabled {
+    background-color: #e3e7e8 !important;
+    color: #687980 !important;
+    opacity: 1 !important;
+}
+thead {
+    height: 50px;
+    border-radius: 32px;
+
+    tr {
+        padding-block-start: 10px;
+        // display: block;
+        // margin-bottom: 10px;
+
+        th {
+            border-inline-start: 1px solid white;
+            font-size: 16px;
+            font-weight: 800;
+            &:first-child {
+                border-top-right-radius: 32px;
+                border-bottom-right-radius: 32px;
+            }
+
+            &:last-child {
+                border-top-left-radius: 32px;
+                border-bottom-left-radius: 32px;
+            }
+        }
+    }
+}
+
+tbody {
+    tr {
+        padding-inline: 10px;
+        transition: all ease-in-out 0.3s;
+        // display: block;
+        // margin-bottom: 10px;
+        &:hover {
+            background-color: #747eb5 !important;
+        }
+        td {
+            padding-inline: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            &:first-child {
+                border-top-right-radius: 26px;
+                border-bottom-right-radius: 26px;
+            }
+
+            &:last-child {
+                border-top-left-radius: 26px;
+                border-bottom-left-radius: 26px;
+            }
+        }
+    }
+}
+
+.table {
+    // border-radius: $border-radius;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    // margin-block-start: 20px;
+}
+
+.nui-input-label,
+.nui-autocomplete-label,
+.nui-textarea-label {
+    width: 100%;
+    text-align: justify;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    padding-bottom: 8px !important;
+}
+
+.nui-input-label,
+.nui-autocomplete-label,
+.nui-textarea-label {
+    color: #191a1c !important;
+}
+
+.dp__label {
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    padding-bottom: 3px !important;
+    color: #191a1c !important;
+}
+.nui-tabs .nui-tab-item {
+    text-align: center;
+    width: -webkit-fill-available;
+}
+
+.nui-tabs.nui-tabs-primary .nui-tab-item:not(.nui-active) {
+    color: #7b8798 !important;
+    border: 0px !important;
+}
+.nui-tabs.nui-tabs-primary .nui-tab-item.nui-active {
+    color: #f3efec !important;
+    background-color: #2DD265;
+    // border-radius: 24px;
+    border: 0px !important;
+}
+
+.nui-tabs.nui-tabs-primary .nui-tab-item.nui-active:last-of-type {
+    border-end-end-radius: 24px;
+    border-start-end-radius: 24px;
+}
+
+.nui-tabs.nui-tabs-primary .nui-tab-item.nui-active:first-of-type {
+    border-start-start-radius: 24px;
+    border-end-start-radius: 24px;
+}
+
+.nui-tabs-inner {
+    border: 2px solid #2DD265;
+    border-radius: 24px;
+}
+
+.nui-placeholder-page {
+    background-color: #fcfaff;
+}
+
+#nt-container div[role='alert']:focus-within {
+    outline-style: none !important;
+}
+
+.apexcharts-text tspan {
+    font-family: 'Noto Kufi Arabic', sans-serif !important;
+}
+
+.nui-pagination.nui-pagination-primary .nui-pagination-link.nui-active {
+    box-shadow: none;
+    color: #2DD265;
+}
+
+.shadow-onsuccess {
+    box-shadow: 3px 0px 80px 5px rgba(0, 237, 81, 1);
+}
+
+.shadow-ondanger {
+    box-shadow: 3px 0px 80px 5px #a72727;
+}
+input {
+    border-radius: 99px !important;
+    // border: 1px solid #f1f3f4 !important;
+    height: auto !important;
+    width: 100% !important;
+}
+input::placeholder {
+    color: #687980cf !important;
+}
+.dp__main * {
+    direction: rtl !important;
+}
+
+.nui-card.nui-card-default {
+    border-color: #f1f3f4 !important;
+}
+
+input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 24px !important;
+    height: 24px !important;
+    padding: 0.1rem;
+    border-radius: 8px !important;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+input[type='checkbox']::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg);
+    top: 7px;
+    left: 6px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+
+input[type='checkbox']:checked::before {
+    opacity: 1;
+}
+button {
+    word-break: keep-all;
+    white-space: nowrap;
+}
+.nui-input-icon,
+.dp__input_icon,
+.nui-autocomplete-icon {
+    color: #2DD265 !important;
+}
