@@ -12,13 +12,13 @@ jobs:
             matrix:
               node-version: [18.x]
         env:
-            target: '/var/www/gruupA/sadid/frontend'
+            target: '/var/www/gruupA/billpay/frontend'
 
             message: |
               [${{ github.event.head_commit.committer.name }}](https://github.com/${{github.event.head_commit.committer.username}}) pushed new commit: 
               `[ ${{github.event.head_commit.message}} ]` 
               to [${{ github.event.repository.name }}](https://github.com/${{github.event.repository.html_url}}) 
-              You can now use it at https://sadid.future-wave.co
+              You can now use it at https://billpay-admin.future-wave.co
             
         steps:
           - name: Checkout code
@@ -46,7 +46,7 @@ jobs:
               username: ${{ secrets.SSH_USERNAME }}
               password: ${{ secrets.SSH_PASSWORD }}
               source: .output/public/*
-              target: "/var/www/groupA/sadid/frontend"
+              target: "/var/www/groupA/billpay/frontend"
               overwrite: true
               rm: false
               debug: true # Enable debugging
