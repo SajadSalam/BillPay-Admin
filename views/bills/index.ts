@@ -8,10 +8,10 @@ export const tableHeader: TableHeader[] = [
     },
     {
         key: "phoneNumber",
-        label: 'رقم الهاتف'
+        label: 'رقم الهاتف او البطاقة'
     },
     {
-        key: "type",
+        key: "paymentType",
         label: 'طريقة الشحن'
     },
     {

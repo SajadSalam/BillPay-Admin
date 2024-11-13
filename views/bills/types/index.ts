@@ -1,31 +1,17 @@
 import type { BaseDto } from '~/utils/types/ApiResponses'
+import type { PaymentTypeDto } from '~/views/payment-type/types';
 
 
 export interface DepositDto extends BaseDto {
-    id: string;
-    creationDate: string;
     amount: number;
-    fibName?: string;
-    fibPhoneNumber?: string;
+    fullName: string;
+    phoneNumber: string;
     image: string;
-    zainCashName?: string;
-    zainCashPhoneNumber?: string;
-    cardNumber?: string;
+    cardNumber: string;
     status: number;
-    rejectReason?: string;
-}
-export type DepositType = "FIB" | "ZAINCASH" | "ZAIN" | "ASIACELL"
-export interface Deposit {
-    id: string;
-    creationDate: string;
-    amount: number;
-    fullName?: string;
-    phoneNumber?: string;
-    cardNumber?: string;
-    image: string;
-    status: number;
-    rejectReason?: string;
-    type: DepositType;
+    rejectReason: string;
+    paymentTypeId: string;
+    paymentType: PaymentTypeDto;
 }
 
 export interface DepositFilters {

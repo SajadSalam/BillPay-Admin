@@ -43,7 +43,11 @@ if (!isLoggedIn) {
 }
 
 onMounted(() => {
-  localStorage.setItem('nuxt-color-mode', 'light')
+  const color = localStorage.getItem('nuxt-color-mode')
+  if (!color || color != 'light') {
+    localStorage.setItem('nuxt-color-mode', 'light')
+    window.location.reload()
+  }
 })
 
 </script>

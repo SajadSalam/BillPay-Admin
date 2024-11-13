@@ -6,7 +6,7 @@ import { tableHeader } from '~/views/bills';
 import PaymentType from '~/views/bills/components/PaymentType.vue';
 import ViewDeposit from '~/views/bills/components/ViewDeposit.vue';
 import { useDepositsStore } from '~/views/bills/stores';
-import type { Deposit, DepositFilters } from '~/views/bills/types';
+import type { DepositDto, DepositFilters } from '~/views/bills/types';
 
 definePageMeta({
     title: 'الرئيسية',
@@ -34,9 +34,9 @@ const deposits = computed(() => depositsStore.deposits)
 
 const isViewDialogOpen = ref(false)
 
-const deposit = ref<Deposit | null>(null)
+const deposit = ref<DepositDto | null>(null)
 
-const onDepositView = (item: Deposit) => {
+const onDepositView = (item: DepositDto) => {
     deposit.value = item
     isViewDialogOpen.value = true
 }
@@ -52,19 +52,21 @@ const onDepositView = (item: Deposit) => {
                     <AppInputField icon="hugeicons:search-01" v-model="filters.phoneNumber" placeholder="رقم الهاتف" />
                 </AppFilters>
             </template>
-            <AppTable title="الموزعون الفرعيون" :headers="tableHeader" :items="deposits">
-
-                <template #data-type="{ item }">
-                    <PaymentType size="sm" :type="item.type" />
+            <AppTable title="طلبات الشحن" :headers="tableHeader" :items="deposits">
+                <template #data-phoneNumber="{ item }">
+                    <span dir="ltr">{{ item.phoneNumber || item.cardNumber }}</span>
+                </template>
+                <template #data-paymentType="{ item }">
+                    <PaymentType size="sm" :type="item.paymentType" />
                 </template>
                 <template #data-actions="{ item }">
                     <div class="flex gap-2">
-                        <BaseButton class="size-9" color="danger" size="md" rounded="full">
+                        <BaseButton v-if="item.status == 0" class="size-9" color="danger" size="md" rounded="full">
                             <span class="flex size-9 items-center justify-center rounded-full">
                                 <Icon name="ph:x" class="text-white size-5" />
                             </span>
                         </BaseButton>
-                        <BaseButton class="size-9" color="success" size="md" rounded="full">
+                        <BaseButton v-if="item.status == 0" class="size-9" color="success" size="md" rounded="full">
                             <span class="flex size-9 items-center justify-center rounded-full">
                                 <Icon name="ph:check" class="text-white size-5" />
                             </span>
@@ -82,6 +84,6 @@ const onDepositView = (item: Deposit) => {
                 </template>
             </AppTable>
         </AppCrud>
-        <ViewDeposit :deposit="deposit" v-model="isViewDialogOpen" />
+        <ViewDeposit :deposit="deposit as DepositDto" v-model="isViewDialogOpen" />
     </div>
 </template>
