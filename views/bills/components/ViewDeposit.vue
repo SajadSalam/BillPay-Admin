@@ -17,6 +17,15 @@ const props = defineProps<{
   <AppDialog v-model="isDialogOpen" title="عرض الايداع" size="lg">
     <PaymentType :type="props.deposit.paymentType" size="lg" />
     <div class="divider border my-3"></div>
+    <div class="flex flex-col text-right mx-5">
+      <p class="font-bold">
+        <Icon name="ph:trash" class="text-danger size-5"></Icon>
+        سبب الرفض
+      </p>
+      <p class="mx-4">
+        {{ props.deposit.rejectReason }}
+      </p>
+    </div>
     <div class="grid grid-cols-2 gap-4 pa-5 items-center justify-center text-center">
       <div class="flex flex-col text-right">
         <p class="font-bold">

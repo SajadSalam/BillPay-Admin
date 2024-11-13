@@ -2,8 +2,10 @@
 import AppInputField from '~/components/app-field/AppInputField.vue';
 import { baseURL } from '~/services/app-client/axios';
 import type { BaseFilters } from '~/utils/types/ApiResponses';
-import { tableHeader } from '~/views/bills';
+import { findStatus, tableHeader } from '~/views/bills';
+import ApproveDeposit from '~/views/bills/components/ApproveDeposit.vue';
 import PaymentType from '~/views/bills/components/PaymentType.vue';
+import RejectDeposit from '~/views/bills/components/RejectDeposit.vue';
 import ViewDeposit from '~/views/bills/components/ViewDeposit.vue';
 import { useDepositsStore } from '~/views/bills/stores';
 import type { DepositDto, DepositFilters } from '~/views/bills/types';
@@ -33,12 +35,23 @@ appTableStore.setLoading(false)
 const deposits = computed(() => depositsStore.deposits)
 
 const isViewDialogOpen = ref(false)
-
+const isApproveDialogOpen = ref(false)
+const isRejectDialogOpen = ref(false)
 const deposit = ref<DepositDto | null>(null)
 
 const onDepositView = (item: DepositDto) => {
     deposit.value = item
     isViewDialogOpen.value = true
+}
+
+const onDepositApprove = (item: DepositDto) => {
+    deposit.value = item
+    isApproveDialogOpen.value = true
+}
+
+const onDepositReject = (item: DepositDto) => {
+    deposit.value = item
+    isRejectDialogOpen.value = true
 }
 </script>
 
@@ -61,12 +74,19 @@ const onDepositView = (item: DepositDto) => {
                 </template>
                 <template #data-actions="{ item }">
                     <div class="flex gap-2">
-                        <BaseButton v-if="item.status == 0" class="size-9" color="danger" size="md" rounded="full">
+                        <BaseTag v-if="item.status != 0" rounded="full" variant="pastel"
+                            :color="findStatus(item.status)?.color">
+                            <p class="mt-1">{{ findStatus(item.status)?.label }} </p>
+
+                        </BaseTag>
+                        <BaseButton @click="onDepositReject(item)" v-if="item.status == 0" class="size-9" color="danger"
+                            size="md" rounded="full">
                             <span class="flex size-9 items-center justify-center rounded-full">
                                 <Icon name="ph:x" class="text-white size-5" />
                             </span>
                         </BaseButton>
-                        <BaseButton v-if="item.status == 0" class="size-9" color="success" size="md" rounded="full">
+                        <BaseButton @click="onDepositApprove(item)" v-if="item.status == 0" class="size-9"
+                            color="success" size="md" rounded="full">
                             <span class="flex size-9 items-center justify-center rounded-full">
                                 <Icon name="ph:check" class="text-white size-5" />
                             </span>
@@ -85,5 +105,7 @@ const onDepositView = (item: DepositDto) => {
             </AppTable>
         </AppCrud>
         <ViewDeposit :deposit="deposit as DepositDto" v-model="isViewDialogOpen" />
+        <ApproveDeposit :deposit="deposit as DepositDto" v-model="isApproveDialogOpen" />
+        <RejectDeposit :deposit="deposit as DepositDto" v-model="isRejectDialogOpen" />
     </div>
 </template>

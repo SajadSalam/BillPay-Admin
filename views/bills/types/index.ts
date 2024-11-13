@@ -21,3 +21,10 @@ export interface DepositFilters {
     phoneNumber?: string
     companyName?: string
 }
+export interface ApproveDepositForm {
+    amount: number;
+    changePrice: boolean;
+}
+export interface RejectDepositForm {
+    reason: string;
+}
